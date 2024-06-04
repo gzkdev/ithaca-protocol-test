@@ -1,8 +1,13 @@
-async function fetchResource(url: string) {
+import { Dispatch } from "react";
+
+export async function fetchResource<T>(
+  url: string,
+  setState?: Dispatch<React.SetStateAction<T>>
+) {
   try {
     const res = await fetch(url);
     const data = await res.json();
-    return data;
+    setState?.(data);
   } catch {
     throw new Error("");
   }
