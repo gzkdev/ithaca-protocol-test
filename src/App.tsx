@@ -4,6 +4,10 @@ import PostsFilter from "./components/posts-filter";
 import PostsSummary from "./components/posts-summary";
 import PostsList from "./components/posts-list";
 
+/**
+ * The main App component which fetches and displays posts and user data.
+ * It handles loading and error states and delegates content rendering to the AppContent component.
+ */
 export default function App() {
   const { data, isLoading, isError } = useQueryAppData();
 
@@ -26,6 +30,14 @@ export default function App() {
   );
 }
 
+/**
+ * AppContent component which receives the fetched data and displays it.
+ * This component is responsible for rendering the posts filter, summary, and list.
+ *
+ * @param {Object} props - The props object.
+ * @param {AppReducerData} props.data - The fetched and processed data to be displayed.
+ * @returns {JSX.Element | null} - The JSX element to render or null if data is null.
+ */
 function AppContent({ data }: { data: AppReducerData }) {
   if (data === null) return null;
 
