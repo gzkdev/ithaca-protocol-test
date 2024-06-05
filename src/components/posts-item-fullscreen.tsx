@@ -23,23 +23,29 @@ export function PostItemFullScreen({
         <button title="Close" onClick={leaveFullScreenMode}>
           <CloseIcon />
         </button>
-        {isError && (
-          <div className={styles.error}>Failed to fetch comments</div>
-        )}
-        {isLoading && <div className={styles.loader} />}
 
-        {data && (
-          <>
-            <div className={styles.postItemContent}>
-              <div className={styles.postTitle}>{title}</div>
-              <div className={styles.postUserName}>By {name}</div>
-              <div className={styles.postBody}>{body}</div>
-            </div>
-            <div className={styles.postItemComments}>
-              <header>Comments</header>
-              <PostItemComments comments={data} />
-            </div>
-          </>
+        {isLoading ? (
+          <div className="info-view">
+            <div title="Fetching data" className="loader" />
+          </div>
+        ) : isError ? (
+          <div className="info-view">
+            <div className="error">Failed to fetch data</div>
+          </div>
+        ) : (
+          data && (
+            <>
+              <div className={styles.postItemContent}>
+                <div className={styles.postTitle}>{title}</div>
+                <div className={styles.postUserName}>By {name}</div>
+                <div className={styles.postBody}>{body}</div>
+              </div>
+              <div className={styles.postItemComments}>
+                <header>Comments</header>
+                <PostItemComments comments={data} />
+              </div>
+            </>
+          )
         )}
       </div>
     </div>,
