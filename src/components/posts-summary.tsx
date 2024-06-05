@@ -12,12 +12,12 @@ type Prop = {
 export default function PostsSummary({ store: { posts, users } }: Prop) {
   return (
     <div className={styles.container}>
-      <div>
-        <PostsIcon />
+      <div className={styles.box}>
+        <UsersIcon />
         {users.length} Users
       </div>
-      <div>
-        <UsersIcon />
+      <div className={styles.box}>
+        <PostsIcon />
         {posts.length} Posts
       </div>
     </div>
