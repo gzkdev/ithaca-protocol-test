@@ -1,27 +1,25 @@
 import { useEffect, useReducer } from "react";
 import { fetchUrlResource } from "../lib/utils";
 
-// Define the state type
+// State type
 interface State<T> {
   data?: T;
   isLoading: boolean;
   isError: boolean;
 }
 
-// Define action types
+// Action types
 type Action<T> =
   | { type: "FETCH_INIT" }
   | { type: "FETCH_SUCCESS"; payload: T }
   | { type: "FETCH_FAILURE" };
 
-// Define the initial state
 const initialState = <T>(): State<T> => ({
   data: undefined,
   isLoading: true,
   isError: false,
 });
 
-// Define the reducer function to manage the state transitions
 function dataFetchReducer<T>(state: State<T>, action: Action<T>): State<T> {
   switch (action.type) {
     case "FETCH_INIT":
