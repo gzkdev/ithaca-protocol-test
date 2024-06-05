@@ -1,4 +1,78 @@
-.listContainer {
+/**
+ *
+ * Filter Component Styles
+ *
+ */
+.postsFilter {
+  position: relative;
+  width: max-content;
+}
+
+.postsFilter button {
+  gap: 12px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: var(--color-100);
+}
+
+.postsFilter button:hover,
+.postsFilter > button[data-open="true"] {
+  background-color: var(--color-200);
+}
+
+.postsFilter > button svg {
+  display: inline-block;
+  vertical-align: middle;
+  transition: 200ms transform;
+}
+
+.postsFilter > button[data-open="true"] svg {
+  transform: rotate(180deg);
+}
+
+.postsDropdown {
+  position: absolute;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 4px 4px;
+  border-radius: 6px;
+  background-color: var(--color-100);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+}
+
+/**
+ *
+ * Summary Component Styles
+ *
+ */
+.postsSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed currentColor;
+  padding: 24px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.postSummaryStat {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/**
+  *
+  * Posts List Component Styles
+  *
+  */
+.postsListContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;

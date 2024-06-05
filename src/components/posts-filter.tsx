@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useClickOutside } from "../hooks/useOnClickOutside";
 import { SelectedUserId, User } from "../lib/types";
 import { DropdownIcon } from "../assets/icons";
-import styles from "../styles/posts-filter.module.css";
+import styles from "../styles/posts.module.css";
 
 export default function PostsFilter({
   users,
@@ -38,17 +38,13 @@ export default function PostsFilter({
   }
 
   return (
-    <div ref={dropdownRef} className={styles.filter}>
-      <button
-        data-open={open}
-        className={styles.trigger}
-        onClick={toggleDropDown}
-      >
+    <div ref={dropdownRef} className={styles.postsFilter}>
+      <button data-open={open} onClick={toggleDropDown}>
         {filterName}
         <DropdownIcon />
       </button>
       {open && (
-        <div className={styles.dropdown}>
+        <div className={styles.postsDropdown}>
           <button onClick={handleSelectUserId(null)}>All Posts</button>
           {users.map(({ name, userId }) => (
             <button key={userId} onClick={handleSelectUserId(userId)}>

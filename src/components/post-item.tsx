@@ -3,7 +3,7 @@ import { Comment, Post } from "../lib/types";
 import { commentsBaseUrl } from "../lib/constants";
 import { fetchUrlResource } from "../lib/utils";
 import { CloseIcon } from "../assets/icons";
-import styles from "../styles/posts-list.module.css";
+import styles from "../styles/posts.module.css";
 
 export default function PostItem({ post }: { post: Post }) {
   const { title, name, body } = post;
