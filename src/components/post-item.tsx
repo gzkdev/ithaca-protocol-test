@@ -1,4 +1,4 @@
-import { PostItemFullScreen } from "./posts-item-fullscreen";
+import { PostItemExpandedView } from "./posts-item-fullscreen";
 import { useExpandedView } from "../hooks/useExpandedView";
 import { Post } from "../lib/types";
 import styles from "../styles/posts.module.css";
@@ -15,7 +15,7 @@ export default function PostItem({ post }: { post: Post }) {
       <div className={styles.postBody}>{body}</div>
 
       {expandedView && (
-        <PostItemFullScreen
+        <PostItemExpandedView
           post={post}
           leaveFullScreenMode={leaveExpandedView}
         />

@@ -14,7 +14,7 @@ import styles from "../styles/posts.module.css";
  * @param {Function} props.leaveFullScreenMode - Function to exit full-screen mode.
  * @returns {JSX.Element} - The JSX element to render.
  */
-export function PostItemFullScreen({
+export function PostItemExpandedView({
   post: { title, name, body, id },
   leaveFullScreenMode,
 }: {

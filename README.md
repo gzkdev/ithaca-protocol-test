@@ -102,6 +102,14 @@ This application used data from the following endppints provided by JSONPlacehol
 
 - Explanation of design decisons: [View](#design-decisions-and-technical-choices)
 
+## What would I do differently?
+
+- Use a library like `useSwr` or `useQuery` to handle data fetching logic
+
+- Use a ui library like `Radix` or `Shadcn` to implement the `PostItemExpandedView` and `DropDown` components
+
+- Use `framer-motion` library to add some feedback animations where necessary
+
 ## Conclusion
 
 This project demonstrates a functional approach to building a React application with hooks, ensuring code quality and performance optimization. The use of custom hooks and useReducer for state management allows for scalable and maintainable code. By following the requirements and best practices, this app provides a clear and responsive user experience for viewing and filtering posts and comments.
