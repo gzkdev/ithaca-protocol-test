@@ -19,12 +19,21 @@ export function getUsersStore(users: UserData[]): UserStore {
 }
 
 function getUserDetails(users: UserStore, userId: number): User {
-  if (users[userId]) throw new Error("User doesn't exist");
+  if (!users[userId]) throw new Error("User doesn't exist");
   return users[userId];
 }
 
-export function getPostsWithUsers(users: UserStore, posts: PostData[]): Post[] {
+export function transformPostsData(
+  users: UserStore,
+  posts: PostData[]
+): Post[] {
   return posts.map(({ body, id, title, userId }) => {
     return { body, id, title, ...getUserDetails(users, userId) };
+  });
+}
+
+export function transformUserData(users: UserData[]): User[] {
+  return users.map(({ id, name, username }) => {
+    return { userId: id, name, username };
   });
 }

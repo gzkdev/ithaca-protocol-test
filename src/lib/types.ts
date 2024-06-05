@@ -53,3 +53,4 @@ export type User = {
 };
 
 export type UserStore = { [id: number]: User };
+export type SelectedUserId = number | null;

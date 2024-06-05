@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --color-050: #fafafa;
   --color-100: #f4f4f5;
@@ -14,24 +20,28 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: var(--color-600);
-  background-color: var(--color-100);
-
   font-synthesis: none;
+  color: var(--color-600);
+  background-color: var(--color-050);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  height: 100%;
-  font-size: 100%;
+button {
+  font-weight: 500;
+  font-family: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-body {
-  height: 100%;
-  font-size: 1rem;
-  box-sizing: border-box;
+.container {
+  max-width: 900px;
+  margin: 0px auto;
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
