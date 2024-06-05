@@ -78,6 +78,12 @@ pnpm dev
 
   - - `useExpandedView`: designed to track whether a post has been opened to view its comment or not. It helped to isolate the logic from the component code
 
+- ### Use Dropdown
+
+- ### Render ExpandedView with Portals:
+
+  The implementation of the `PostItemExpandedView` component was a good scenario where it is valid to render components via portals in React and it was implemented that way.
+
 - ### Components:
 
   - - `App`: the main component that integrates the `post` list, `filter`, `summary`, and handles data fetching using the `useQueryAppData` hook. The app data (`posts` and `users` lists) are fetched here and distributed to child components
@@ -109,6 +115,10 @@ This application used data from the following endppints provided by JSONPlacehol
 - Use a ui library like `Radix` or `Shadcn` to implement the `PostItemExpandedView` and `DropDown` components
 
 - Use `framer-motion` library to add some feedback animations where necessary
+
+- Make components more accessible via `ARIA` roles and rules
+
+- Paginate the `posts` data or use virtualized lists to improve performance incase of a large data set
 
 ## Conclusion
 
