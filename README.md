@@ -96,7 +96,7 @@ This application used data from the following endppints provided by JSONPlacehol
 
 ## Deliverables
 
-- Github Repository: [View](https://github.com/gzkdev/ithaca-protocol-test.git)
+- Github Repository: [View](https://github.com/gzkdev/ithaca-protocol-test)
 
 - README file on how to run project locally: [you just passed it :)](#getting-started)
 
