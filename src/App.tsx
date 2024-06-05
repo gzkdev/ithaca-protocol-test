@@ -1,11 +1,12 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { useQueryAppData } from "./hooks/useQueryAppData";
 import PostsFilter from "./components/posts-filter";
 import PostsSummary from "./components/posts-summary";
-import PostsList from "./components/posts-list";
+// import PostsList from "./components/posts-list";
 
 function App() {
-  const { selectedUserId, updateSelectedUserId, users } = useQueryAppData();
+  const { selectedUserId, updateSelectedUserId, store, users } =
+    useQueryAppData();
 
   return (
     <div className="app">
@@ -17,7 +18,7 @@ function App() {
             updateSelectedUserId={updateSelectedUserId}
             selectedUserId={selectedUserId}
           />
-          {/* <PostsSummary posts={filteredPosts} users={users} /> */}
+          <PostsSummary store={store} />
           {/* <PostsList /> */}
         </Suspense>
       </div>

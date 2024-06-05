@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Post, PostData, SelectedUserId, User, UserData } from "../lib/types";
 import { postsBaseUrl, usersBaseUrl } from "../lib/constants";
 import {
@@ -17,6 +17,14 @@ export function useQueryAppData() {
   const [posts, setPosts] = useState<Array<Post>>([]);
   const [users, setUsers] = useState<Array<User>>([]);
   const [selectedUserId, setSelectedUserId] = useState<SelectedUserId>(null);
+
+  const store = useMemo(() => {
+    if (selectedUserId == null) return { posts, users };
+    return {
+      posts: posts.filter(({ userId }) => userId === selectedUserId),
+      users: users.filter(({ userId }) => userId === selectedUserId),
+    };
+  }, [selectedUserId, posts, users]);
 
   function updateSelectedUserId(userId: SelectedUserId) {
     setSelectedUserId(userId);
@@ -41,6 +49,7 @@ export function useQueryAppData() {
   return {
     posts,
     users,
+    store,
     selectedUserId,
     updateSelectedUserId,
   };

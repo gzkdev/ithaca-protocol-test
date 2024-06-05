@@ -1,16 +1,25 @@
+import { PostsIcon, UsersIcon } from "../assets/icons";
 import { Post, User } from "../lib/types";
 import styles from "../styles/posts-summary.module.css";
 
-export default function PostsSummary({
-  users,
-  posts,
-}: {
-  users: User[];
-  posts: Post[];
-}) {
+type Prop = {
+  store: {
+    users: User[];
+    posts: Post[];
+  };
+};
+
+export default function PostsSummary({ store: { posts, users } }: Prop) {
   return (
     <div className={styles.container}>
-      <div>{users.length} Users</div>•<div>{posts.length} Posts</div>
+      <div>
+        <PostsIcon />
+        {users.length} Users
+      </div>
+      <div>
+        <UsersIcon />
+        {posts.length} Posts
+      </div>
     </div>
   );
 }
