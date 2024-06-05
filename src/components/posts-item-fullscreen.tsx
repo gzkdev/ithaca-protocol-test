@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { CloseIcon } from "../assets/icons";
 import { useQueryUrlResource } from "../hooks/useQueryUrlResource";
 import { commentsBaseUrl } from "../lib/constants";
@@ -16,7 +17,7 @@ export function PostItemFullScreen({
   const { data, isLoading, isError } =
     useQueryUrlResource<Comment[]>(commentsUrl);
 
-  return (
+  return createPortal(
     <div className={styles.postItemFullScreen}>
       <div className={styles.postItemFullScreenContainer}>
         <button title="Close" onClick={leaveFullScreenMode}>
@@ -41,6 +42,7 @@ export function PostItemFullScreen({
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.getElementById("portal")!
   );
 }
