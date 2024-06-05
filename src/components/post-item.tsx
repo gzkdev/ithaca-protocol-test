@@ -1,4 +1,4 @@
-import { PostItemExpandedView } from "./posts-item-fullscreen";
+import { PostItemExpandedView } from "./posts-item-expanded-view";
 import { useExpandedView } from "../hooks/useExpandedView";
 import { Post } from "../lib/types";
 import styles from "../styles/posts.module.css";
