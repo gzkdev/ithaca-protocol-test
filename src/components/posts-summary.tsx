@@ -3,7 +3,6 @@ import { ComponentStoreProp } from "../lib/types";
 import styles from "../styles/posts.module.css";
 
 export default function PostsSummary({ posts, users }: ComponentStoreProp) {
-  if (!posts || !users) return;
   return (
     <div className={styles.postsSummary}>
       <div className={styles.postSummaryStat}>
