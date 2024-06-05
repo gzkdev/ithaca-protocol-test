@@ -28,8 +28,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3 {
+  color: var(--color-600);
+}
+
 button {
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--color-600);
   font-family: inherit;
   background: none;
   border: none;
