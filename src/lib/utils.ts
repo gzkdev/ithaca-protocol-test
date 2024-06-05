@@ -1,6 +1,6 @@
 import { Post, PostData, User, UserData, UserStore } from "./types";
 
-export async function fetchResource<T>(url: string): Promise<T> {
+export async function fetchUrlResource<T>(url: string): Promise<T> {
   try {
     const res = await fetch(url);
     const data = await res.json();

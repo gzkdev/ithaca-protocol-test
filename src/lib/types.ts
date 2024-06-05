@@ -1,4 +1,4 @@
-export type CommentData = {
+export type Comment = {
   postId: number;
   id: number;
   name: string;
@@ -50,6 +50,13 @@ export type User = {
   name: string;
   userId: number;
   username: string;
+};
+
+export type ComponentStoreProp = {
+  store: {
+    users: User[];
+    posts: Post[];
+  };
 };
 
 export type UserStore = { [id: number]: User };

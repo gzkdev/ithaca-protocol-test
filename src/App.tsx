@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import { useQueryAppData } from "./hooks/useQueryAppData";
 import PostsFilter from "./components/posts-filter";
 import PostsSummary from "./components/posts-summary";
-// import PostsList from "./components/posts-list";
+import PostsList from "./components/posts-list";
 
-function App() {
+export default function App() {
   const { selectedUserId, updateSelectedUserId, store, users } =
     useQueryAppData();
 
@@ -19,11 +19,9 @@ function App() {
             selectedUserId={selectedUserId}
           />
           <PostsSummary store={store} />
-          {/* <PostsList /> */}
+          <PostsList store={store} />
         </Suspense>
       </div>
     </div>
   );
 }
-
-export default App;

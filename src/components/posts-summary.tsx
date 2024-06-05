@@ -1,15 +1,10 @@
 import { PostsIcon, UsersIcon } from "../assets/icons";
-import { Post, User } from "../lib/types";
+import { ComponentStoreProp } from "../lib/types";
 import styles from "../styles/posts-summary.module.css";
 
-type Prop = {
-  store: {
-    users: User[];
-    posts: Post[];
-  };
-};
-
-export default function PostsSummary({ store: { posts, users } }: Prop) {
+export default function PostsSummary({
+  store: { posts, users },
+}: ComponentStoreProp) {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
