@@ -1,8 +1,6 @@
 import { useEffect, useState, MouseEvent } from "react";
-import { Comment, Post } from "../lib/types";
-import { commentsBaseUrl } from "../lib/constants";
-import { fetchUrlResource } from "../lib/utils";
-import { CloseIcon } from "../assets/icons";
+import { PostItemFullScreen } from "./posts-item-fullscreen";
+import { Post } from "../lib/types";
 import styles from "../styles/posts.module.css";
 
 export default function PostItem({ post }: { post: Post }) {
@@ -37,65 +35,6 @@ export default function PostItem({ post }: { post: Post }) {
           leaveFullScreenMode={leaveFullScreenMode}
         />
       )}
-    </div>
-  );
-}
-
-function PostItemFullScreen({
-  post: { title, name, body, id },
-  leaveFullScreenMode,
-}: {
-  post: Post;
-  leaveFullScreenMode(e: React.MouseEvent): void;
-}) {
-  const [comments, setComments] = useState<Array<Comment>>([]);
-  const commentsUrl = `${commentsBaseUrl}?postId=${id}`;
-
-  useEffect(() => {
-    (async function fetchComments() {
-      try {
-        const commentsData = await fetchUrlResource<Array<Comment>>(
-          commentsUrl
-        );
-        setComments(commentsData);
-      } catch {
-        throw new Error("Failed to fetch Comments");
-      }
-    })();
-  }, []);
-
-  return (
-    <div className={styles.postItemFullScreen}>
-      <div className={styles.postItemFullScreenContainer}>
-        <button title="Close" onClick={leaveFullScreenMode}>
-          <CloseIcon />
-        </button>
-        <div className={styles.postItemContent}>
-          <div className={styles.postTitle}>{title}</div>
-          <div className={styles.postUserName}>By {name}</div>
-          <div className={styles.postBody}>{body}</div>
-        </div>
-
-        <div className={styles.postItemComments}>
-          <header>Comments</header>
-          <PostItemComments comments={comments} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PostItemComments({ comments }: { comments: Comment[] }) {
-  return (
-    <div className={styles.postItemsGrid}>
-      {comments.map(({ body, id, email }) => (
-        <div key={id} className={styles.postItemComment}>
-          <div>
-            <span>{email}</span> commented
-          </div>
-          <div>{body}</div>
-        </div>
-      ))}
     </div>
   );
 }
