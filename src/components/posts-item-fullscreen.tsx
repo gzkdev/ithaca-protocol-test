@@ -6,6 +6,14 @@ import { PostItemComments } from "./post-item-comments";
 import { Post, Comment } from "../lib/types";
 import styles from "../styles/posts.module.css";
 
+/**
+ * Component to display a full-screen view of a post with its comments.
+ *
+ * @param {Object} props - The props object.
+ * @param {Post} props.post - The post data to be displayed.
+ * @param {Function} props.leaveFullScreenMode - Function to exit full-screen mode.
+ * @returns {JSX.Element} - The JSX element to render.
+ */
 export function PostItemFullScreen({
   post: { title, name, body, id },
   leaveFullScreenMode,
@@ -13,7 +21,10 @@ export function PostItemFullScreen({
   post: Post;
   leaveFullScreenMode(e: React.MouseEvent): void;
 }) {
+  // Construct the URL to fetch comments for the given post ID
   const commentsUrl = `${commentsBaseUrl}?postId=${id}`;
+
+  // Use the custom hook to fetch comments data
   const { data, isLoading, isError } =
     useQueryUrlResource<Comment[]>(commentsUrl);
 
