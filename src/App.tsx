@@ -11,9 +11,13 @@ export default function App() {
     <div className="app">
       <div className="container">
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="info-view">
+            <div title="Fetching data" className="loader" />
+          </div>
         ) : isError ? (
-          <div></div>
+          <div className="info-view">
+            <div className="error">Failed to fetch data</div>
+          </div>
         ) : (
           <AppContent data={data} />
         )}
