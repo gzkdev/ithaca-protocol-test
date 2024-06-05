@@ -9,11 +9,11 @@ export default function PostsSummary({
     <div className={styles.container}>
       <div className={styles.box}>
         <UsersIcon />
-        {users.length} Users
+        <span>{users.length} Users</span>
       </div>
       <div className={styles.box}>
         <PostsIcon />
-        {posts.length} Posts
+        <span> {posts.length} Posts</span>
       </div>
     </div>
   );

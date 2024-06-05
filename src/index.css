@@ -38,9 +38,9 @@ button {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0px auto;
-  padding: 24px 24px;
+  padding: 64px 24px;
   display: flex;
   flex-direction: column;
   gap: 40px;
