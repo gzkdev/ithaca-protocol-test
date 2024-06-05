@@ -1,5 +1,10 @@
 import { useMemo, useReducer, useCallback } from "react";
-import { PostData, SelectedUserId, UserData } from "../lib/types";
+import {
+  AppReducerData,
+  PostData,
+  SelectedUserId,
+  UserData,
+} from "../lib/types";
 import { postsBaseUrl, usersBaseUrl } from "../lib/constants";
 import {
   getUsersStore,
@@ -9,9 +14,9 @@ import {
 import { useQueryUrlResource } from "./useQueryUrlResource";
 
 // State type
-type State = {
+interface State {
   selectedUserId: SelectedUserId;
-};
+}
 
 // Action types
 type Action = { type: "SET_SELECTED_USER_ID"; payload: SelectedUserId };
@@ -36,23 +41,19 @@ function appDataReducer(state: State, action: Action): State {
  * Custom hook to fetch and manage posts and users data, and provide filtering functionality.
  *
  * @returns {Object} - An object containing:
- *  - {Array<Post>} posts: The fetched posts data.
- *  - {Array<User>} users: The fetched users data.
- *  - {Object} store: The filtered posts and users based on the selected user ID.
- *  - {SelectedUserId} selectedUserId: The currently selected user ID for filtering.
+ *  - {Data<T>} data: The fetched and filtered posts and users data.
  *  - {boolean} isLoading: Whether the data is currently being loaded.
  *  - {boolean} isError: Whether there was an error fetching the data.
- *  - {function} updateSelectedUserId: Function to update the selected user ID.
  */
 export function useQueryAppData() {
   const [state, dispatch] = useReducer(appDataReducer, initialState);
 
+  // Use the custom hook to fetch users and posts data
   const {
     data: usersData,
     isLoading: isUsersLoading,
     isError: isUsersError,
   } = useQueryUrlResource<UserData[]>(usersBaseUrl);
-
   const {
     data: postsData,
     isLoading: isPostsLoading,
@@ -93,13 +94,21 @@ export function useQueryAppData() {
     dispatch({ type: "SET_SELECTED_USER_ID", payload: userId });
   }, []);
 
+  const data: AppReducerData =
+    isLoading || isError
+      ? null
+      : {
+          posts,
+          users,
+          filteredUsers: store.users,
+          filteredPosts: store.posts,
+          selectedUserId: state.selectedUserId,
+          updateSelectedUserId,
+        };
+
   return {
-    posts,
-    users,
-    store,
-    selectedUserId: state.selectedUserId,
+    data,
     isLoading,
     isError,
-    updateSelectedUserId,
   };
 }

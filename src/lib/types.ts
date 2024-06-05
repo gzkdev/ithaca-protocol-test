@@ -53,10 +53,17 @@ export type User = {
 };
 
 export type ComponentStoreProp = {
-  store: {
-    users: User[];
-    posts: Post[];
-  };
+  users: User[];
+  posts: Post[];
+};
+
+export type AppReducerData = null | {
+  posts: Post[];
+  users: User[];
+  filteredUsers: User[];
+  filteredPosts: Post[];
+  selectedUserId: SelectedUserId;
+  updateSelectedUserId: (userId: SelectedUserId) => void;
 };
 
 export type UserStore = { [id: number]: User };
