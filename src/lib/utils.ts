@@ -1,13 +1,15 @@
 import { Post, PostData, User, UserData, UserStore } from "./types";
 
-export async function fetchUrlResource<T>(url: string): Promise<T> {
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
-  } catch {
-    throw new Error(`Failed to fetch resource at ${url}`);
+export async function fetchUrlResource<T>(
+  url: string,
+  options: RequestInit= {}
+): Promise<T> {
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
   }
+  const data = await response.json();
+  return data as T;
 }
 
 export function getUsersStore(users: UserData[]): UserStore {
