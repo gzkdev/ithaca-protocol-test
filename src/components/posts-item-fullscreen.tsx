@@ -20,7 +20,7 @@ export function PostItemFullScreen({
 }: {
   post: Post;
   leaveFullScreenMode(e: React.MouseEvent): void;
-}) {
+}): JSX.Element {
   // Construct the URL to fetch comments for the given post ID
   const commentsUrl = `${commentsBaseUrl}?postId=${id}`;
 
