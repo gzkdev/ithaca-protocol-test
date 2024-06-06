@@ -79,7 +79,9 @@ export function useQueryAppData() {
   const store = useMemo(() => {
     if (state.selectedUserId == null) return { posts, users };
     return {
-      posts: posts.filter(({ userId }) => userId === state.selectedUserId),
+      posts: posts
+        .filter(({ userId }) => userId === state.selectedUserId)
+        .sort((postA, postB) => postA.id - postB.id),
       users: users.filter(({ userId }) => userId === state.selectedUserId),
     };
   }, [state.selectedUserId, posts, users]);
