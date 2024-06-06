@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useClickOutside } from "../hooks/useOnClickOutside";
 import { SelectedUserId, User } from "../lib/types";
 import { DropdownIcon } from "../assets/icons";
+import { useToggleDropdown } from "../hooks/useToggleDropdown";
 import styles from "../styles/posts.module.css";
 
 export default function PostsFilter({
@@ -13,29 +14,17 @@ export default function PostsFilter({
   selectedUserId: SelectedUserId;
   updateSelectedUserId: (userId: SelectedUserId) => void;
 }) {
-  const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const {
+    open,
+    filterName,
+    toggleDropDown,
+    closeDropDown,
+    handleSelectUserId,
+  } = useToggleDropdown(users, selectedUserId, updateSelectedUserId);
+
   useClickOutside(dropdownRef, closeDropDown);
-
-  const filterName = selectedUserId
-    ? users.find(({ userId }) => userId == selectedUserId)?.name
-    : "All Posts";
-
-  function toggleDropDown() {
-    setOpen((previousValue) => !previousValue);
-  }
-
-  function closeDropDown() {
-    setOpen(false);
-  }
-
-  function handleSelectUserId(userId: SelectedUserId) {
-    return () => {
-      updateSelectedUserId(userId);
-      setOpen(false);
-    };
-  }
 
   return (
     <div ref={dropdownRef} className={styles.postsFilter}>
