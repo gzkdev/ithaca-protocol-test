@@ -78,6 +78,8 @@ pnpm dev
 
   - - `useExpandedView`: designed to track whether a post has been opened to view its comment or not. It helped to isolate the logic from the component code
 
+  - - `useToggleDropdown`: designed to manage the `open` and `closed` states and the filter component and separate UI from component logic.
+
 - ### Use Dropdown
 
 - ### Render ExpandedView with Portals:
